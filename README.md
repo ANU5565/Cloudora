@@ -10,7 +10,6 @@ Built with **Next.js 16 (App Router)** on the frontend and **Python / FastAPI + 
 
 ## Key Highlights
 
-- **Apple-Inspired Visual Design System:** Crafted with a light theme default (`#FAFAFA`, `#FFFFFF`, `#1D1D1F`, `#6E6E73`, `#0071E3`), restrained typography, thin borders, and responsive layouts.
 - **Decoupled Object Storage:** File contents never burden backend memory. Uploads and downloads use short-lived presigned URLs (15-minute TTL).
 - **Authoritative Storage Quotas:** Atomic pre-upload quota reservations prevent concurrent upload bypass. Real-time category breakdown (Images, Videos, Documents, Audio, Archives, Code, Others).
 - **Robust Folder Tree & Cycle Protection:** Full hierarchical navigation with interactive breadcrumbs and server-side cycle detection preventing invalid folder recursion.
