@@ -39,7 +39,7 @@ export default function LoginPage() {
             <div className="w-10 h-10 rounded-xl bg-[#0071E3] flex items-center justify-center text-white shadow-sm">
               <Cloud className="w-5 h-5" />
             </div>
-            <span className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">Cloudora</span>
+            <span className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">Nubes</span>
           </Link>
           <h2 className="text-2xl font-semibold text-[#1D1D1F]">Sign in to your space</h2>
           <p className="text-sm text-[#6E6E73] mt-1.5">Enter your email and password to access your files</p>
@@ -65,7 +65,7 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@example.com"
+                  placeholder="namee@xyz.com"
                   className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#E5E5EA] text-sm text-[#1D1D1F] focus:outline-none focus:border-[#0071E3] transition-colors"
                 />
               </div>
@@ -113,15 +113,15 @@ export default function LoginPage() {
               onClick={fillDemo}
               className="w-full py-2 text-xs text-[#6E6E73] hover:text-[#0071E3] transition-colors text-center"
             >
-              Fill Demo Credentials (alice@cloudora.io)
+              Fill Demo Credentials (anuu@nubes.io)
             </button>
           </div>
         </div>
 
         <p className="text-center text-xs text-[#6E6E73] mt-8">
-          Don't have an account yet?{" "}
+          Don't have an ac yet 🤨?{" "}
           <Link href="/register" className="text-[#0071E3] font-medium hover:underline">
-            Create your space
+            Create your space 🧘🏻‍♂️
           </Link>
         </p>
       </div>
