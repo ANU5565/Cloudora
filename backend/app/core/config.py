@@ -16,7 +16,8 @@ class Settings(BaseSettings):
     FRONTEND_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "http://localhost:3001"
+        "http://localhost:3001",
+        "https://cloudora-one.vercel.app"
     ]
 
     # Database

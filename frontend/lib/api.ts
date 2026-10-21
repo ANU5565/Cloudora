@@ -1,4 +1,27 @@
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://cloudora-q358.onrender.com";
+const API_PREFIX = "/api/v1";
+const DEFAULT_API_BASE = "https://cloudora-q358.onrender.com/api/v1";
+
+function normalizeApiBase(rawBase?: string): string {
+  const trimmed = rawBase?.trim();
+  if (!trimmed) return DEFAULT_API_BASE;
+
+  const withoutTrailingSlash = trimmed.replace(/\/+$/, "");
+  const candidate = withoutTrailingSlash.endsWith(API_PREFIX)
+    ? withoutTrailingSlash
+    : `${withoutTrailingSlash}${API_PREFIX}`;
+
+  try {
+    new URL(candidate);
+    return candidate;
+  } catch {
+    if (process.env.NODE_ENV === "production") {
+      return DEFAULT_API_BASE;
+    }
+    return candidate;
+  }
+}
+
+export const API_BASE = normalizeApiBase(process.env.NEXT_PUBLIC_API_URL);
 
 export interface User {
   id: string;
