@@ -2,7 +2,7 @@
 
 > **"Your digital world. One beautiful, secure space."**
 
-Cloudora is a modern, privacy-focused cloud storage platform inspired by the simplicity and refinement of Apple applications and the convenience of Google Drive.
+Nubes is a modern, privacy-focused cloud storage platform inspired by the simplicity and refinement of Apple applications and the convenience of Google Drive.
 
 Built with **Next.js 16 (App Router)** on the frontend and **Python / FastAPI + SQLAlchemy 2.x** on the backend, Cloudora decouples binary object storage from web application servers. Files are uploaded directly to private cloud object storage (Cloudflare R2 or AWS S3), while application metadata and strict access control are authoritatively governed by PostgreSQL.
 
@@ -23,7 +23,7 @@ Built with **Next.js 16 (App Router)** on the frontend and **Python / FastAPI + 
 ## Repository Structure
 
 ```
-cloudora/
+Nubes Repona/
 ├── frontend/                     # Next.js 16 App Router Frontend
 │   ├── app/                      # Routes (Marketing, Auth, Dashboard, Share)
 │   ├── components/               # UI & Layout components
