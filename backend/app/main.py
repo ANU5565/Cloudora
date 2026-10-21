@@ -41,9 +41,11 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
 # Add middlewares
 app.add_middleware(SecurityHeadersMiddleware)
 
+allowed_origins = [origin.rstrip("/") for origin in settings.FRONTEND_ORIGINS]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.FRONTEND_ORIGINS,
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
