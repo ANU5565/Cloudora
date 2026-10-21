@@ -28,7 +28,7 @@ export default function LandingPage() {
             <div className="w-9 h-9 rounded-xl bg-[#0071E3] flex items-center justify-center text-white shadow-sm">
               <Cloud className="w-5 h-5" />
             </div>
-            <span className="text-xl font-semibold tracking-tight">Cloudora</span>
+            <span className="text-xl font-semibold tracking-tight">Nubes Repona</span>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-[#6E6E73]">
@@ -93,7 +93,7 @@ export default function LandingPage() {
               <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
               <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
               <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
-              <span className="text-xs text-[#86868B] ml-2">Cloudora Workspace</span>
+              <span className="text-xs text-[#86868B] ml-2">Cloud Workspace</span>
             </div>
             <div className="text-xs text-[#86868B] bg-[#F2F2F7] px-3 py-1 rounded-md">
               Encrypted Private Storage
@@ -224,7 +224,7 @@ export default function LandingPage() {
               Privacy by design. Security by default.
             </h2>
             <p className="text-[#6E6E73] text-base">
-              Here is an honest breakdown of the security controls actively implemented in Cloudora.
+              Here is an honest breakdown of the security controls actively implemented in Nubes.
             </p>
           </div>
 
@@ -267,7 +267,7 @@ export default function LandingPage() {
             Clear, transparent storage plans
           </h2>
           <p className="text-[#6E6E73] text-base max-w-xl mx-auto mb-16">
-            Cloudora does not promise deceptive "unlimited" storage. Every plan comes with authoritative quota transparency.
+            Nubes does not promise deceptive "unlimited" storage. Every plan comes with authoritative quota transparency.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -335,7 +335,7 @@ export default function LandingPage() {
             <div className="w-7 h-7 rounded-lg bg-[#0071E3] flex items-center justify-center text-white">
               <Cloud className="w-4 h-4" />
             </div>
-            <span className="font-semibold text-[#1D1D1F]">Cloudora</span>
+            <span className="font-semibold text-[#1D1D1F]">Nubes</span>
             <span>— Your digital world. One beautiful, secure space.</span>
           </div>
 
@@ -347,8 +347,8 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-6 pt-6 border-t border-[#E5E5EA] text-xs text-[#86868B] flex flex-col sm:flex-row justify-between">
-          <span>&copy; 2026 Cloudora Platform. Open-source, privacy-first cloud storage architecture.</span>
-          <span className="mt-2 sm:mt-0">Designed inspired by Apple and Google Drive simplicity.</span>
+          <span>&copy; 2026 Nubes Repona Platform. Open-source, privacy-first cloud storage architecture.</span>
+          <span className="mt-2 sm:mt-0">Designed by dev.Anuu inspired by icloud simplicity.</span>
         </div>
       </footer>
     </div>
