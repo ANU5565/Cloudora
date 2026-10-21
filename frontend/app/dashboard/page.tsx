@@ -122,7 +122,7 @@ export default function DashboardOverviewPage() {
       <div className="rounded-2xl bg-white border border-[#E5E5EA] p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">
-            Welcome to your Cloudora Workspace
+            Welcome to your Nubes Workspace
           </h1>
           <p className="text-sm text-[#6E6E73] mt-1">
             All your files are safely encrypted in private cloud object storage.
