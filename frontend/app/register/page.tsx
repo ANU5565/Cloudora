@@ -59,7 +59,7 @@ export default function RegisterPage() {
             <div className="w-10 h-10 rounded-xl bg-[#0071E3] flex items-center justify-center text-white shadow-sm">
               <Cloud className="w-5 h-5" />
             </div>
-            <span className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">Cloudora</span>
+            <span className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">Nubes</span>
           </Link>
           <h2 className="text-2xl font-semibold text-[#1D1D1F]">Create your personal space</h2>
           <p className="text-sm text-[#6E6E73] mt-1.5">5 GB high-speed private cloud storage included free</p>
@@ -151,7 +151,7 @@ export default function RegisterPage() {
                 className="mt-1 rounded text-[#0071E3] focus:ring-0"
               />
               <label htmlFor="terms" className="text-xs text-[#6E6E73] leading-normal">
-                I agree to the Cloudora Terms of Service and acknowledge the privacy-by-default architecture policy.
+                I agree to the Nubes Terms of Service and acknowledge the privacy-by-default architecture policy.
               </label>
             </div>
 
