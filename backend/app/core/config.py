@@ -1,5 +1,7 @@
 import os
+import secrets
 from typing import List, Optional
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -24,7 +26,7 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "sqlite:///./cloudora.db"
 
     # Security & JWT
-    JWT_SECRET_KEY: str = "cloudora-production-strength-secure-secret-key-entropy-928374928"
+    JWT_SECRET_KEY: Optional[str] = None
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
 
@@ -42,6 +44,17 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE: int = 250 * 1024 * 1024  # 250 MB
     SIGNED_URL_TTL_SECONDS: int = 900  # 15 minutes
     TRASH_RETENTION_DAYS: int = 30
+
+    @model_validator(mode="after")
+    def validate_jwt_secret(self) -> "Settings":
+        if self.APP_ENV.lower() == "production":
+            if not self.JWT_SECRET_KEY or len(self.JWT_SECRET_KEY) < 32:
+                raise ValueError(
+                    "JWT_SECRET_KEY must be explicitly configured with at least 32 characters in production"
+                )
+        elif not self.JWT_SECRET_KEY:
+            self.JWT_SECRET_KEY = secrets.token_urlsafe(32)
+        return self
 
 
 settings = Settings()
