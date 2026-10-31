@@ -109,4 +109,36 @@ def test_file_upload_lifecycle(client):
     # 10. Permanent delete
     perm_del = client.delete(f"/api/v1/files/{file_id}/permanent", headers=headers)
     assert perm_del.status_code == 200
+
+
+def test_upload_rejects_object_larger_than_reserved_size(client):
+    token = get_auth_token(client, email="oversized@cloudora.io")
+    headers = {"Authorization": f"Bearer {token}"}
+
+    intent_res = client.post(
+        "/api/v1/files/upload-intents",
+        headers=headers,
+        json={"filename": "small.txt", "size_bytes": 4, "mime_type": "text/plain"},
+    )
+    assert intent_res.status_code == 200, intent_res.text
+    intent = intent_res.json()
+
+    upload_res = client.put(
+        intent["upload_url"],
+        data=b"this object is larger than reserved",
+        headers={"Content-Type": "text/plain"},
+    )
+    assert upload_res.status_code == 200
+
+    complete_res = client.post(
+        f"/api/v1/files/{intent['file_id']}/complete-upload",
+        headers=headers,
+        json={"upload_session_id": intent["upload_session_id"]},
+    )
+    assert complete_res.status_code == 413
+    assert complete_res.json()["detail"]["code"] == "FILE_TOO_LARGE"
+
+    import urllib.parse
+    key = urllib.parse.parse_qs(urllib.parse.urlparse(intent["upload_url"]).query)["key"][0]
+    assert not get_storage_provider().verify_object(key)["exists"]
     assert len(client.get("/api/v1/files", headers=headers).json()) == 0
