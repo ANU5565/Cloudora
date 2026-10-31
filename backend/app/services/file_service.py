@@ -116,6 +116,13 @@ class FileService:
 
         # Update file verified size, checksum, and status
         verified_size = obj_meta.get("size_bytes", session.reserved_bytes)
+        if verified_size > session.reserved_bytes:
+            storage.delete_object(session.storage_key)
+            session.status = "failed"
+            file_obj.upload_status = "failed"
+            db.commit()
+            raise FileTooLargeException(session.reserved_bytes)
+
         file_obj.size_bytes = verified_size
         file_obj.checksum = obj_meta.get("etag")
         file_obj.upload_status = "completed"

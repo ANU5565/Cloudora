@@ -28,6 +28,7 @@ Cloudora is a modern, privacy-focused cloud storage platform designed with an Ap
 3. **Direct Upload:** Browser streams file directly to Cloudflare R2 or AWS S3. Server RAM is never burdened by massive binary streams.
 4. **Completion Verification (`POST /api/v1/files/{id}/complete-upload`):**
    - Backend queries the storage provider (`head_object`) to authoritatively verify object presence and actual byte length.
+   - Objects larger than the upload session's reserved size are deleted and rejected.
    - `File.upload_status` transitions to `completed`.
    - `UploadSession.status` transitions to `completed`.
    - User's storage usage is recalculated authoritatively.
