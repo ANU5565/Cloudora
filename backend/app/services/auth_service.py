@@ -2,7 +2,13 @@ from sqlalchemy.orm import Session
 from app.models.user import User
 from app.models.audit import AuditEvent
 from app.schemas.auth import UserRegister, UserLogin
-from app.core.security import hash_password, verify_password, create_access_token, generate_secure_token
+from app.core.security import (
+    hash_password,
+    verify_password,
+    create_access_token,
+    generate_secure_token,
+    password_version,
+)
 from app.core.exceptions import AuthenticationException, CloudoraException
 from fastapi import status
 
@@ -58,7 +64,10 @@ class AuthService:
                 code="ACCOUNT_INACTIVE"
             )
 
-        token = create_access_token(subject=user.id, claims={"email": user.email})
+        token = create_access_token(
+            subject=user.id,
+            claims={"email": user.email, "password_version": password_version(user.hashed_password)},
+        )
 
         # Audit event
         audit = AuditEvent(

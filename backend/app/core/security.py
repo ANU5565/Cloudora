@@ -53,6 +53,11 @@ def hash_token(token: str) -> str:
     return hashlib.sha256(token.encode("utf-8")).hexdigest()
 
 
+def password_version(hashed_password: str) -> str:
+    """Return a non-reversible version identifier for the current password."""
+    return hashlib.sha256(hashed_password.encode("utf-8")).hexdigest()
+
+
 def normalize_filename(filename: str) -> str:
     """
     Sanitize filename against path traversal, control characters, and reserved names.
