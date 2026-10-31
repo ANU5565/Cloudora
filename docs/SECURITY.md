@@ -15,7 +15,7 @@
 ## 2. Authentication & Session Lifecycles
 - Production startup requires an explicitly configured JWT signing key with at least 32 characters; development generates an ephemeral key when one is not provided.
 - Short-lived Bearer JWT tokens signed with HMAC-SHA256.
-- Password change immediately invalidates old passwords and logs security events.
+- Password changes invalidate existing access tokens and log security events.
 - Client stores JWT in browser local storage and attaches it to Authorization Bearer headers.
 
 ## 3. Storage Security

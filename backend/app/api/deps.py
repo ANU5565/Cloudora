@@ -3,7 +3,7 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.models.user import User
-from app.core.security import decode_access_token
+from app.core.security import decode_access_token, password_version
 from app.core.exceptions import AuthenticationException
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login", auto_error=False)
@@ -30,5 +30,8 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Account is inactive"
         )
+
+    if payload.get("password_version") != password_version(user.hashed_password):
+        raise AuthenticationException("Session expired after password change")
 
     return user

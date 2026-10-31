@@ -43,3 +43,32 @@ def test_register_and_login(client):
         "password": "WrongPassword!"
     })
     assert bad_login.status_code == 401
+
+
+def test_password_change_invalidates_existing_session(client):
+    registration = {
+        "email": "password-change@cloudora.io",
+        "full_name": "Password Change",
+        "password": "Password123!",
+        "confirm_password": "Password123!",
+        "terms_accepted": True,
+    }
+    assert client.post("/api/v1/auth/register", json=registration).status_code == 200
+
+    login = client.post(
+        "/api/v1/auth/login",
+        json={"email": registration["email"], "password": registration["password"]},
+    )
+    token = login.json()["access_token"]
+    headers = {"Authorization": f"Bearer {token}"}
+
+    changed = client.post(
+        "/api/v1/auth/change-password",
+        headers=headers,
+        json={"current_password": registration["password"], "new_password": "NewPassword123!"},
+    )
+    assert changed.status_code == 200
+
+    me = client.get("/api/v1/auth/me", headers=headers)
+    assert me.status_code == 401
+    assert me.json()["detail"]["message"] == "Session expired after password change"
